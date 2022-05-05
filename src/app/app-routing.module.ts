@@ -1,37 +1,37 @@
-import { AuthGuard } from './shared/services/auth.guard';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AdminLayoutComponent } from './shared/components/layout/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './shared/components/layout/auth-layout/auth-layout.component';
+import { AuthGuard } from "./shared/services/auth.guard";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { AdminLayoutComponent } from "./shared/components/layout/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./shared/components/layout/auth-layout/auth-layout.component";
 
 const adminRoutes = [
   {
-    path: 'home',
-    loadChildren: './view/home/home.module#HomeModule'
-  }
-]
+    path: "",
+    loadChildren: "./view/home/home.module#HomeModule",
+  },
+];
 
 const routes: Routes = [
+  // {
+  //   path: "",
+  //   component: AuthLayoutComponent,
+  //   children: [
+  //     {
+  //       path: "",
+  //       loadChildren: "./view/accounts/accounts.module#AccountsModule",
+  //     },
+  //   ],
+  // },
   {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './view/accounts/accounts.module#AccountsModule'
-      }
-    ]
-  },
-  {
-    path: '',
+    path: "",
     component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
-    children: adminRoutes
-  }
+    // canActivate: [AuthGuard],
+    children: adminRoutes,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
