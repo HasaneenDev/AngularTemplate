@@ -1,1 +1,48 @@
-<p>Login page</p>
+<div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">Login</div>
+      <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="signin(loginForm)">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              autocomplete="off"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="email.invalid && email.touched"
+            >
+              <div *ngIf="email.errors.required">this fiel is required</div>
+              <div *ngIf="email.errors.email">email is not vaild</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              formControlName="password"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="loginForm.invalid"
+          >
+            Submit
+          </button>
+          <div *ngIf="userNotValid" class="mt-1 p-1 text-center text-danger">
+            email or password is not correct
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
