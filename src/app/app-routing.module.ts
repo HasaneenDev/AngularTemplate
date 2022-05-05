@@ -7,7 +7,7 @@ import { AuthLayoutComponent } from "./shared/components/layout/auth-layout/auth
 const adminRoutes = [
   {
     path: "",
-    loadChildren: "./view/home/home.module#HomeModule",
+    loadChildren: () => import('./view/home/home.module').then(m => m.HomeModule),
   },
 ];
 
